@@ -1,0 +1,122 @@
+/* ============================================================
+   BASE – ESTILOS GENERALES, RESET, LOGIN, NAVBAR Y ANIMACIONES
+   ============================================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* ---------------- LOGIN ---------------- */
+
+.login-bg {
+  background-image: url("fondoTPI.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: rgba(0,0,0,0.6);
+  background-blend-mode: darken;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+.login-container {
+  background: rgba(255,255,255,0.12);
+  padding: 35px;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 380px;
+  text-align: center;
+  color: white;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+
+.logo {
+  width: 100px;
+  margin-bottom: 15px;
+  filter: drop-shadow(0 0 3px black);
+}
+
+input,
+select {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+}
+
+select {
+  background: white;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button {
+  background-color: #f7df1e;
+  color: #000;
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: .3s;
+}
+
+button:hover {
+  background-color: #ffea3d;
+  transform: scale(1.03);
+}
+
+#mensaje {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #ff9a9a;
+}
+
+/* ---------------- NAVBAR ---------------- */
+
+.navbar {
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 25px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.navbar h2 {
+  color: #111;
+}
+
+.navbar-right span {
+  font-weight: 600;
+  margin-right: 15px;
+}
+
+.navbar button {
+  width: auto;
+  padding: 8px 15px;
+  background: #ffcc00;
+}
+
+.navbar button:hover {
+  background: #ffe84d;
+}
+
+/* ---------------- ANIMACIONES ---------------- */
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}

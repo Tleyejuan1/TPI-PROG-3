@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sistema de Alquiler de Autos</title>
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="style/base.css">
+</head>
+
+<body class="login-bg">
+
+  <div class="login-container">
+
+    <!-- Logo -->
+    <img src="logoTPI.png" alt="Logo del sistema" class="logo">
+
+    <!-- Título -->
+    <h1>🚗 Sistema de Alquiler de Autos</h1>
+
+    <div class="login-box">
+
+      <!-- Email -->
+      <input type="text" id="email" placeholder="Correo electrónico">
+
+      <!-- Password -->
+      <input type="password" id="password" placeholder="Contraseña">
+
+      <!-- Selector de Rol -->
+      <select id="rol">
+        <option value="">-- Seleccioná tu rol --</option>
+        <option value="admin">Administrador</option>
+        <option value="usuario">Usuario</option>
+      </select>
+
+      <!-- Botón ingresar -->
+      <button onclick="login()">Ingresar</button>
+
+      <!-- Mensaje -->
+      <p id="mensaje"></p>
+
+      <!-- Botón para registrarse -->
+      <button class="btn-secondary" onclick="window.location.href='registro.html'">
+        Crear cuenta nueva
+      </button>
+
+    </div>
+
+    <footer>© 2025 - Proyecto UTN - Grupo de Juan Tleye</footer>
+
+  </div>
+
+  <script src="./js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Panel Usuario</title>
+
+  <!-- CSS BASE Y USUARIO -->
+  <link rel="stylesheet" href="style/base.css">
+  <link rel="stylesheet" href="style/usuario.css">
+</head>
+
+<body class="panel user-bg">
+
+  <!-- ====================================================== -->
+  <!-- 🔵 NAVBAR SUPERIOR - Bienvenida + Logout               -->
+  <!-- ====================================================== -->
+  <div class="navbar user-nav">
+    <h2>🚘 Bienvenido</h2>
+
+    <div class="navbar-right">
+      <!-- Nombre del usuario (script.js) -->
+      <span id="user-nombre"></span>
+      <button onclick="cerrarSesion()" class="btn-logout">Cerrar sesión</button>
+    </div>
+  </div>
+
+
+  <!-- ====================================================== -->
+  <!-- 🟢 SECCIÓN BUSCADOR SUPER PRO                          -->
+  <!-- ====================================================== -->
+  <section class="user-wrapper">
+
+    <!-- Caja completa -->
+    <div class="user-search-box">
+
+      <!-- Buscador -->
+      <div class="search-row">
+        <span class="search-icon">🔍</span>
+
+        <input 
+          type="text" 
+          id="filtro-texto" 
+          placeholder="Buscar por marca o modelo..."
+          oninput="filtrarAutosUsuario()"
+          class="input-search-pro"
+        />
+      </div>
+
+      <!-- Fechas -->
+      <div class="dates-container">
+
+        <div class="date-item">
+          <label for="fechaInicio">Inicio</label>
+          <input 
+            type="date" 
+            id="fechaInicio"
+            onchange="filtrarAutosUsuario()"
+            class="input-date-pro"
+          >
+        </div>
+
+        <div class="date-item">
+          <label for="fechaFin">Fin</label>
+          <input 
+            type="date" 
+            id="fechaFin"
+            onchange="filtrarAutosUsuario()"
+            class="input-date-pro"
+          >
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Título -->
+    <h2 class="user-section-title">Autos Disponibles</h2>
+
+    <!-- Grid dinámico de autos (script.js) -->
+    <div id="autosUsuario" class="user-cards-grid"></div>
+
+    <!-- Mensajes -->
+    <p id="msg-usuario" class="msg-user-pro"></p>
+
+  </section>
+
+
+  <!-- ====================================================== -->
+  <!-- 🟠 SECCIÓN RESERVAS DEL USUARIO                        -->
+  <!-- ====================================================== -->
+  <section class="reservas-section">
+    <h2 class="reservas-title">Mis Reservas</h2>
+
+    <!-- Grid dinámico de reservas -->
+    <div id="misReservas" class="reservas-grid"></div>
+  </section>
+
+
+  <!-- ====================================================== -->
+  <!-- 🟣 SCRIPTS                                              -->
+  <!-- ====================================================== -->
+  <script src="data/autos.js"></script>
+  <script src="./js/script.js"></script>
+
+
+
+
+
+  <script>
+    /* 🔐 Protección del panel */
+    initSessionGuard("usuario");
+
+    /* Mostrar nombre */
+    document.getElementById("user-nombre").textContent = getNombreActivo();
+
+    /* Cargar datos + Render de todo el panel */
+    loadState().then(() => {
+      renderUsuario();
+
+      // Por si implementamos más filtros en el futuro
+      if (typeof cargarMarcas === "function") cargarMarcas();
+    });
+  </script>
+
+</body>
+</html>

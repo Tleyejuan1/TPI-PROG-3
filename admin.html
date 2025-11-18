@@ -1,0 +1,142 @@
+<!DOCTYPE html> 
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Panel Admin</title>
+
+  <link rel="stylesheet" href="style/base.css">
+  <link rel="stylesheet" href="style/admin.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body class="panel admin-bg">
+
+  <!-- NAV -->
+  <div class="navbar">
+    <h2>👨‍💼 Administrador</h2>
+    <div class="navbar-right">
+      <span id="admin-nombre"></span>
+      <button onclick="cerrarSesion()">Cerrar sesión</button>
+    </div>
+  </div>
+
+  <!-- PANEL GENERAL -->
+  <section id="dashboard" class="dashboard">
+    <h2>📊 Panel de Flota</h2>
+
+    <div class="stats">
+      <div class="stat-box"><h4>Total</h4><p id="count-total">0</p></div>
+      <div class="stat-box ok"><h4>Disponibles</h4><p id="count-disponibles">0</p></div>
+      <div class="stat-box no"><h4>No disponibles</h4><p id="count-no-disponibles">0</p></div>
+    </div>
+
+    <div class="chart-container">
+      <canvas id="grafico"></canvas>
+    </div>
+  </section>
+
+  <!-- PANEL A — OCTUBRE -->
+  <section class="dash-grid" style="margin-top:40px;">
+    <div class="dash-card"><h2>📊 Autos por Marca (Octubre)</h2><canvas id="grafico-marcas"></canvas></div>
+    <div class="dash-card"><h2>🚗 Días Reservados (Octubre)</h2><canvas id="grafico-disponibilidad-marcas"></canvas></div>
+    <div class="dash-card"><h2>💰 Ingresos (Octubre)</h2><canvas id="grafico-promedios"></canvas></div>
+    <div class="dash-card"><h2>🔥 Top Rentables (Octubre)</h2><canvas id="grafico-top5"></canvas></div>
+    <div class="dash-card"><h2>📈 % Ocupación (Octubre)</h2><canvas id="grafico-porcentaje"></canvas></div>
+    <div class="dash-card"><h2>💸 Top Reservas (Octubre)</h2><canvas id="grafico-top5-baratos"></canvas></div>
+  </section>
+
+  <!-- ===================================================== -->
+<!-- 🟩 PANEL B — ESTADÍSTICAS ACTUALES (NOV–DIC 2025) -->
+<!-- ===================================================== -->
+
+<section class="dash-grid" style="margin-top:60px;">
+  <div class="dash-card">
+    <h2>📊 Autos por Marca (Actual)</h2>
+    <canvas id="grafico-marcas-actual"></canvas>
+  </div>
+
+  <div class="dash-card">
+    <h2>🚗 Días Reservados (Actual)</h2>
+    <canvas id="grafico-disponibilidad-actual"></canvas>
+  </div>
+
+  <div class="dash-card">
+    <h2>💰 Ingresos (Actual)</h2>
+    <canvas id="grafico-promedios-actual"></canvas>
+  </div>
+
+  <div class="dash-card">
+    <h2>🔥 Top Rentables (Actual)</h2>
+    <canvas id="grafico-top5-actual"></canvas>
+  </div>
+
+  <div class="dash-card">
+    <h2>📈 % Ocupación (Actual)</h2>
+    <canvas id="grafico-porcentaje-actual"></canvas>
+  </div>
+
+  <div class="dash-card">
+    <h2>💸 Top Reservas (Actual)</h2>
+    <canvas id="grafico-top5-baratos-actual"></canvas>
+  </div>
+</section>
+
+
+  <!-- FORMULARIO NUEVO AUTO -->
+  <section class="form-section">
+    <h2>🚗 Agregar nuevo vehículo</h2>
+    <p class="subtext">Completá los datos del auto que quieras sumar a la flota.</p>
+
+    <form id="form-auto" onsubmit="agregarAuto(event)">
+      <div class="form-grid">
+        <div class="form-group"><label>Marca</label><input type="text" id="auto-marca" required/></div>
+        <div class="form-group"><label>Modelo</label><input type="text" id="auto-modelo" required/></div>
+        <div class="form-group"><label>Precio por día</label><input type="number" id="auto-precio" required/></div>
+        <div class="form-group"><label>URL imagen</label><input type="url" id="auto-img"/></div>
+        <div class="form-group check"><label><input type="checkbox" id="auto-disponible" checked/> Disponible</label></div>
+      </div>
+      <button class="btn-agregar">➕ Agregar</button>
+      <p id="msg-auto" class="msg"></p>
+    </form>
+  </section>
+
+  <!-- LISTA DE AUTOS -->
+  <section id="lista" class="autos-lista">
+    <h2>🚘 Vehículos registrados</h2>
+    <div id="listaAutos" class="cards"></div>
+  </section>
+
+  <!-- TABLA DE RESERVAS -->
+  <section class="form-section" style="margin-top:50px;">
+    <h2>📅 Reservas registradas</h2>
+    <p class="subtext">Listado completo de reservas obtenidas desde MockAPI.</p>
+
+    <table class="tabla-reservas">
+      <thead>
+        <tr>
+          <th>ID</th><th>Cliente</th><th>DNI</th><th>Teléfono</th>
+          <th>Vehículo</th><th>Inicio</th><th>Fin</th>
+          <th>Total</th><th>Estado</th><th>Acción</th>
+        </tr>
+      </thead>
+      <tbody id="tablaReservas"></tbody>
+    </table>
+  </section>
+
+  <script src="./js/script.js"></script>
+
+  <script>
+    initSessionGuard("admin");
+    document.getElementById("admin-nombre").textContent = getNombreActivo();
+
+    loadState().then(() => {
+      renderAdmin();
+      renderReservasAdmin();
+    });
+  </script>
+
+</body>
+</html>

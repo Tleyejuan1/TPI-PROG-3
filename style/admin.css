@@ -1,0 +1,257 @@
+/* ============================================================
+   ADMIN – DASHBOARD, FORMULARIOS, LISTA DE AUTOS Y GRÁFICOS
+   ============================================================ */
+
+/* 🔥 Fondo elegante con imagen + capa suave */
+body.admin-bg {
+  background-image: url("fondoTPI.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  /* capa translúcida para que todo siga viéndose bien */
+  background-color: rgba(255, 255, 255, 0.85);
+  background-blend-mode: lighten;
+
+  color: #333;
+  font-family: Poppins, sans-serif;
+}
+
+/* ---------------- DASHBOARD PRINCIPAL ---------------- */
+
+.dashboard {
+  background: rgba(255, 247, 204, 0.9);
+  padding: 25px;
+  border-radius: 15px;
+  margin: 25px auto;
+  text-align: center;
+  max-width: 900px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
+
+.stats {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.stat-box {
+  background: #ffffff;
+  padding: 15px 25px;
+  border-radius: 12px;
+  min-width: 120px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  text-align: center;
+}
+
+.stat-box.ok { background: #d2ffd2; }
+.stat-box.no { background: #ffd2d2; }
+
+/* ---------------- DASHBOARD GRID (6 gráficos) ---------------- */
+
+.dash-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  padding: 20px;
+  max-width: 1300px;
+  margin: 40px auto;
+}
+
+.dash-card {
+  background: #fffefd;
+  padding: 22px;
+  border-radius: 16px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.12);
+  text-align: center;
+}
+
+.dash-card h2 {
+  font-size: 1.25rem;
+  margin-bottom: 12px;
+}
+
+/* 🎯 GRAFICOS — tamaño uniforme para todos */
+.dash-card canvas,
+#grafico,
+.chart-container canvas {
+  display: block !important;
+  margin: 0 auto !important;
+  max-width: 300px !important;   /* ANCHO UNIFORME */
+  max-height: 300px !important;  /* ALTO UNIFORME  */
+  width: 100% !important;
+  aspect-ratio: 1 / 1 !important; /* mantiene proporción */
+  border-radius: 12px;
+  background: white;
+  padding: 6px;
+}
+
+/* ---------------- FORMULARIO AGREGAR AUTO ---------------- */
+
+.form-section {
+  background: #fff;
+  padding: 25px;
+  border-radius: 15px;
+  max-width: 900px;
+  margin: 30px auto;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+  gap: 20px;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.btn-agregar {
+  margin-top: 20px;
+  padding: 14px;
+  font-weight: 700;
+  background: #ffcc00;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.btn-agregar:hover {
+  background: #ffe84d;
+}
+
+/* ---------------- LISTA DE AUTOS ---------------- */
+
+.autos-lista {
+  max-width: 1200px;
+  margin: 40px auto;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  padding: 12px;
+  text-align: center;
+  animation: fadeIn .35s ease;
+}
+
+.card img {
+  width: 100%;
+  height: 130px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+.price {
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.badge.ok { 
+  display: inline-block;
+  padding: 5px 10px;
+  background: #caffca;
+  color: #0d7700;
+  border-radius: 8px;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.badge.no {
+  display: inline-block;
+  padding: 5px 10px;
+  background: #ffd2d2;
+  color: #9b0000;
+  border-radius: 8px;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.btn-delete {
+  background: #222;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+/* Animación */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ================================
+   📅 TABLA DE RESERVAS – PRO
+================================ */
+
+.tabla-reservas {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  font-size: 15px;
+}
+
+.tabla-reservas thead tr {
+  background: #f4f4f4;
+  font-weight: 600;
+  color: #333;
+}
+
+.tabla-reservas th,
+.tabla-reservas td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.tabla-reservas tr:hover {
+  background: #fafafa;
+}
+
+.badge-status.ok {
+  background: #caffca;
+  color: #0e6f00;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.badge-status.no {
+  background: #ffd4d4;
+  color: #a30000;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.btn-cancel {
+  background: #ffcc00;
+  color: #222;
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-cancel:hover {
+  background: #ffe066;
+}

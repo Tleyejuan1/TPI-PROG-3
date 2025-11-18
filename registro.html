@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro de Usuario</title>
+
+  <link rel="stylesheet" href="style/base.css">
+</head>
+
+<body class="login-bg">
+
+  <div class="login-container">
+
+    <h1>📝 Crear nueva cuenta</h1>
+
+    <div class="login-box">
+
+      <!-- NOMBRE -->
+      <input type="text" id="reg-nombre" placeholder="Nombre completo" required>
+
+      <!-- TELÉFONO -->
+      <input type="text" id="reg-telefono" placeholder="Teléfono" required>
+
+      <!-- DNI (FALTABA) -->
+      <input type="text" id="reg-dni" placeholder="DNI" required>
+
+      <!-- EMAIL -->
+      <input type="email" id="reg-email" placeholder="Correo electrónico" required>
+
+      <!-- CONTRASEÑA -->
+      <input type="password" id="reg-password" placeholder="Contraseña" required>
+
+      <!-- BOTÓN REGISTRARSE -->
+      <button type="button" onclick="registrarUsuario()">Registrarme</button>
+
+      <!-- MENSAJE CORREGIDO (ANTES ERA mensaje-registro) -->
+      <p id="reg-mensaje"></p>
+
+      <!-- VOLVER -->
+      <button class="btn-secondary" onclick="window.location.href='index.html'">
+        ← Volver al inicio
+      </button>
+
+    </div>
+
+  </div>
+
+  <script src="./js/script.js"></script>
+</body>
+</html>
