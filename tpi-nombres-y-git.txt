@@ -1,5 +1,4 @@
 Materia: Programacion III
-Grupo 4
 Profesor:Eloy Molina
 Link GIT:https://github.com/Tleyejuan1/TPI-PROG-3.git
 Nombres de integrantes del grupo:Nicolas Diaz, Juan Tleye, Ignacio Ortiz, Lucas Bergara
